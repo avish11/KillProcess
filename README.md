@@ -19,12 +19,10 @@ except subprocess.CalledProcessError:
     print(f"No process listening on port {port}")
 else:
     listening = None
-
     for l in output.splitlines():
         if "LISTEN" in l :
             listening = l
             break
-
         if listening:
             pid = int(listening.split()[1])
             os.kill(pid,9)
